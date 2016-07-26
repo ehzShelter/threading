@@ -23,13 +23,11 @@ int temperature(void)
 int main(void)
 {
     std::cout << "Wife: ..Tomorrow, we are going on a picnic.\n"
-              << "what will be the weather, I mean temperature" << std::endl;
+              << "Wife: What will be the weather, I mean temperature" << std::endl;
 
     std::future<int> answer = std::async(std::launch::deferred, temperature);
 
     std::cout << "Wife:    I should pack for tomorrow." << std::endl;
-
-    makeBreak(2);
 
     std::cout << "Wife:    Hopefully my husband can figure out the weather soon."
               << std::endl;
