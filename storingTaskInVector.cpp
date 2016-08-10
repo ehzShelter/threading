@@ -1,7 +1,7 @@
 #include <future>
 #include <iostream>
-#include <vector>
 #include <thread>
+#include <vector>
 
 int twice(int m)
 {
@@ -19,25 +19,23 @@ int main(void)
     std::vector<std::future<int>> futureTasks;
     std::vector<std::future<void>> voidTasking;
 
-    for (int i = 0; i < 10; i++)
-    {
+    for (int i = 0; i < 10; i++) {
         futureTasks.push_back(std::async(twice, i));
     }
 
-    for (int i = 0; i < 10; i++)
-    {
+    for (int i = 0; i < 10; ++i) {
+        futureTasks.push_back(std::async([](int m) { return 2 * m; }, i));
+    }
+
+    for (int i = 0; i < 10; i++) {
         voidTasking.push_back(std::async(HelloThread));
     }
 
-
-    for (auto &voidTask : voidTasking)
-    {
-         voidTask.get();
+    for (auto& voidTask : voidTasking) {
+        voidTask.get();
     }
 
-
-    for (auto &e : futureTasks)
-    {
+    for (auto& e : futureTasks) {
         std::cout << e.get() << std::endl;
     }
 }
