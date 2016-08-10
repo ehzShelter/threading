@@ -31,6 +31,12 @@ int main(void)
         voidTasking.push_back(std::async(HelloThread));
     }
 
+    for (int i = 0; i < 10; i++) {
+        voidTasking.push_back(std::async([]() {
+            std::cout << "hello I am captured in Lambda...";
+        }));
+    }
+
     for (auto& voidTask : voidTasking) {
         voidTask.get();
     }
