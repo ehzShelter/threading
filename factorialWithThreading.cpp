@@ -24,3 +24,20 @@ int main()
 
     std::cout << fu.get() << std::endl;
 }
+
+void MyClass::buttonClickedEvent( int buttonId ) {
+    // I need to have an access to all members of MyClass's class
+}
+
+void MyClass::setEvent() {
+
+    void ( *func ) ( int );
+    func = buttonClickedEvent; // <-- Reference to non static member function must be called
+
+}
+
+setEvent();
+
+
+void (MyClass::*func)(int);
+func = &MyClass::buttonClickedEvent;
