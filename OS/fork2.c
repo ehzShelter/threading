@@ -4,11 +4,8 @@
 
 void dummy()
 {
-    pid_t pid1 = fork();
-    pid_t pid2 = fork();
-
-    printf("process 1 %d\n", pid1);
-    printf("process 2 %d\n", pid2);
+    printf("process 1 %d\n", fork());
+    printf("process 2 %d\n", fork());
 }
 
 int main(void)
